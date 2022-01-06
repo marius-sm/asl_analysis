@@ -80,3 +80,20 @@ Now we can run FastSurfer
 ```
 ./run_fastsurfer.sh --t1 .../nifti_data/3D_Ax_T1_MPRAGE_F.nii --sd .../nifti_data --sid .../nifti_data/fastsurfer_outputs --seg_only
 ```
+
+This should create a file
+```
+nifti_data
+└── fastsurfer_outputs
+    └── mri
+        └── aparc.DKTatlas+aseg.deep.mgz
+```
+
+The file `aparc.DKTatlas+aseg.deep.mgz` is in a FastSurfer conformed space. We will now move it back to the native space of the T1 image
+```
+mri_vol2vol \
+--mov nifti_data/fastsurfer_outputs/mri/aparc.DKTatlas+aseg.deep.mgz \
+--targ nifti_data/3D_Ax_T1_MPRAGE_F.nii \
+--o nifti_data/fastsurfer_outputs/mri/aparc.DKTatlas+aseg.deep_native_space.nii.gz \ 
+--regheader --interp nearest
+```
