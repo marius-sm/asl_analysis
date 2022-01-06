@@ -38,3 +38,6 @@ nifti_data
 ├── 3D_Ax_T1_MPRAGE_F_serie_2.nii
 └── 3D_Ax_T1_MPRAGE_F_serie_2.json
 ````
+Each `.nii` file is accompanied by a `.json` file containing the meta-data (acquision parameters, etc).
+
+## Plexus choroid segmentation on T1
